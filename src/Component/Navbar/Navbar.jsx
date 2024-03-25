@@ -40,8 +40,8 @@ function Navbar() {
     </ul>
   </div>
   <div className="navbar-end">
-  <button className="btn btn-info mr-4">Sign in</button>
-  <button className="btn btn-success">Sign Up</button>
+  <button className="btn btn-success mr-4 text-white">Sign in</button>
+  <button className="btn btn-info text-white">Sign Up</button>
   </div>
     </div>
     </div>

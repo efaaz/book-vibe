@@ -16,25 +16,25 @@ function Navbar() {
       <li><NavLink to="/" className={({isActive}) =>
                                         `mx-4 text-lg ${isActive ? "btn btn-outline btn-success font-semibold" : "text-gray-700"} `
                                     }>Home</NavLink></li>
-        <li><NavLink to="/about" className= {({isActive}) =>
+        <li><NavLink to="/ListedBooks" className= {({isActive}) =>
                                         `mx-4 text-lg ${isActive ? "btn btn-outline btn-success font-semibold" : "text-gray-700"}`
                                     }>Listed Books</NavLink></li>
-        <li><NavLink to="/about" className={({isActive}) =>
+        <li><NavLink to="/PagesToRead" className={({isActive}) =>
                                         `mx-4 text-lg ${isActive ? "btn btn-outline btn-success font-semibold" : "text-gray-700"}`
                                     }>Pages To Read</NavLink></li>
       </ul>
     </div>
-    <a className="btn btn-ghost text-3xl font-bold">Book Vibe</a>
+    <a className="btn btn-ghost lg:text-3xl text-xl font-bold">Book Vibe</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 flex items-center">
     <li><NavLink to="/" className={({isActive}) =>
                                         `mx-2 text-lg ${isActive ? "btn btn-outline btn-success font-semibold" : "text-gray-700"} `
                                     }>Home</NavLink></li>
-        <li><NavLink to="/about" className= {({isActive}) =>
+        <li><NavLink to="/ListedBooks" className= {({isActive}) =>
                                         `mx-2 text-lg ${isActive ? "btn btn-outline btn-success font-semibold" : "text-gray-700"}`
                                     }>Listed Books</NavLink></li>
-        <li><NavLink to="/about" className={({isActive}) =>
+        <li><NavLink to="/PagesToRead" className={({isActive}) =>
                                         `mx-2 text-lg ${isActive ? "btn btn-outline btn-success font-semibold" : "text-gray-700"}`
                                     }>Pages To Read</NavLink></li>
     </ul>

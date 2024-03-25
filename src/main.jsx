@@ -9,6 +9,9 @@ import Root from './Component/Root/Root.jsx';
 import ErrorPage from './Component/Error/ErrorPage.jsx';
 import Banner from './Component/Banner/Banner.jsx';
 import Home from './Component/Home/Home.jsx';
+import PagesToRead from './Component/PagesToRead/PagesToRead.jsx';
+import ListedBooks from './Component/ListedBooks/ListedBooks.jsx';
+
 
 
 const router = createBrowserRouter([
@@ -20,6 +23,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/PagesToRead",
+        element: <PagesToRead />,
+      },
+      {
+        path: "/ListedBooks",
+        element: <ListedBooks />,
       },
     ],
   },

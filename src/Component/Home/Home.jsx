@@ -7,7 +7,7 @@ function Home() {
     <>
         <Banner />
         <h1 className="text-4xl font-bold text-center mb-4 mt-8 playfair">Book</h1>
-        <div className="container mx-auto grid grid-cols-3 gap-4">
+        <div className="container mx-auto grid lg:grid-cols-3 grid-cols-1 gap-4">
         <Books />  
         <Books />  
         <Books />  

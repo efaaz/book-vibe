@@ -30,7 +30,6 @@ function Banner() {
             className="rounded-lg"
             src="/assets/blob1.jpeg"
             alt="img"
-            srcset=""
           />
         </div>
       </div>

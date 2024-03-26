@@ -1,22 +1,23 @@
-import React from 'react'
-import Banner from '../Banner/Banner'
-import Books from '../Book/Book'
+import React, { useContext } from "react";
+import UserContex from "../Context/Context";
+import Banner from "../Banner/Banner";
+import Book from "../Book/Book";
 
 function Home() {
+  const { user } = useContext(UserContex);
   return (
     <>
-        <Banner />
-        <h1 className="text-4xl font-bold text-center mb-4 mt-8 playfair">Book</h1>
-        <div className="container mx-auto grid lg:grid-cols-3 grid-cols-1 gap-4">
-        <Books />  
-        <Books />  
-        <Books />  
-        <Books />  
-        <Books />  
-        <Books />  
-        </div>
+      <Banner />
+      <h1 className="text-4xl font-bold text-center mb-4 mt-8 playfair">
+        Book
+      </h1>
+      <div className="container mx-auto grid lg:grid-cols-3 grid-cols-1 lg:justify-between lg:gap-y-4">
+        {user.map((book, idx) => (
+          <Book key={idx} data={book} />
+        ))}
+      </div>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;

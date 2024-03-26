@@ -11,6 +11,9 @@ import Banner from './Component/Banner/Banner.jsx';
 import Home from './Component/Home/Home.jsx';
 import PagesToRead from './Component/PagesToRead/PagesToRead.jsx';
 import ListedBooks from './Component/ListedBooks/ListedBooks.jsx';
+import CardDetails from './Component/CardDetails/CardDetails.jsx';
+import UserContexProvider from './Component/Context/Context.jsx';
+import App from './Component/BarChart/BarChart.jsx';
 
 
 
@@ -32,12 +35,24 @@ const router = createBrowserRouter([
         path: "/ListedBooks",
         element: <ListedBooks />,
       },
+      {
+        path: "/CardDetails/:bookId",
+        element: <CardDetails />,
+        // children: [
+        //   {
+        //     path: "/:bookId",
+        //     element: <Home />,
+        //   },
+        // ]
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <UserContexProvider>
     <RouterProvider router={router} />
+    </UserContexProvider>
   </React.StrictMode>,
 )

@@ -34,6 +34,7 @@ const router = createBrowserRouter([
       {
         path: "/ListedBooks",
         element: <ListedBooks />,
+        loader: ()=> fetch('/api.json')
       },
       {
         path: "/CardDetails/:bookId",

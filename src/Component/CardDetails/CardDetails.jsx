@@ -1,13 +1,37 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import UserContex from "../Context/Context";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { saveReadedBook, saveWishlistBook, getStoredReadBook } from "../utility/Utility";
 
 function CardDetails() {
   const { bookId } = useParams();
   let id = parseInt(bookId)
   const { user } = useContext(UserContex);
   const selectdBook = user.find(book => book.bookId === id);
-  console.log(selectdBook);
+
+  const handleWishlistButtonClick = () => {
+    const storedReadBooks = getStoredReadBook();
+    const isBookRead = storedReadBooks.includes(id);
+    
+    if (isBookRead) {
+        // Display toast indicating that the book has already been read
+        toast("This book has already been read.");
+    } else {
+        // Add the book to the wishlist
+        saveWishlistBook(id);
+        // Display toast indicating that the book has been added to the wishlist
+        toast("This book has been added to your wishlist.");
+    }
+};
+ 
+
+  const handleReadButtonClick = () => {
+    saveReadedBook(id)
+    
+    toast("selected book")
+  };
 
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl container mx-auto mt-16 work">
@@ -38,10 +62,14 @@ function CardDetails() {
         <p className="font-semibold"><span className="font-normal text-base text-[#131313B3]">Year of Publishing: </span>{selectdBook.yearOfPublishing}</p>
         <p className="font-semibold"><span className="font-normal text-base text-[#131313B3]">Rating: </span>{selectdBook.rating}</p>
         <div className="card-actions">
-          <button className="btn btn-outline">Read</button>
-          <button className="btn btn-info text-white">Wishlist</button>
+          <button className="btn btn-outline" onClick={()=>{
+            handleReadButtonClick();
+          }}>Read</button>
+          <button onClick={()=>{
+            handleWishlistButtonClick();}} className="btn btn-info text-white">Wishlist</button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

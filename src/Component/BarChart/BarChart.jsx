@@ -92,6 +92,6 @@ export default function App() {
     </BarChart>
   );
 }
-console.log(obj);
+
 
 App.demoUrl = 'https://codesandbox.io/s/bar-chart-with-customized-shape-dusth';

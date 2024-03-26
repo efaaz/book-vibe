@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLoaderData } from "react-router-dom";
+import { getStoredReadBook } from "../utility/Utility";
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
 
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
-
+ 
 const data = [
   {
     name: 'Page A',
@@ -40,7 +42,6 @@ const data = [
     pv: 3800,
     amt: 2500,
   },
-  
 ];
 
 const getPath = (x, y, width, height) => {
@@ -57,6 +58,17 @@ const TriangleBar = (props) => {
 };
 
 export default function App() {
+  const books = useLoaderData();
+  const [readedbook, setReadedBooks] = useState([]);
+
+  useEffect(() => {
+    const storedBooks = getStoredReadBook();
+    if (books.length > 0) {
+      const readedBooks = books.filter((book) => storedBooks.includes(book.bookId));
+      setReadedBooks(readedBooks);
+      
+    }
+  }, [books]); 
   return (
     <BarChart
       width={1100}
@@ -74,11 +86,12 @@ export default function App() {
       <YAxis />
       <Bar dataKey="uv" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
         {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={colors[index % 20]} />
+          <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
         ))}
       </Bar>
     </BarChart>
   );
 }
+console.log(obj);
 
 App.demoUrl = 'https://codesandbox.io/s/bar-chart-with-customized-shape-dusth';

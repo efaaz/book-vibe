@@ -82,7 +82,7 @@ function ListedBooks() {
             >
               <img
                 src={book.image}
-                className="w-[20%] h-[1%] pl-12 my-auto"
+                className="lg:w-[21%] w-[80%] lg:pl-12 lg:p-0 p-2 my-auto mx-auto lg:pt-0 pt-4 "
                 alt="Album"
               />
 

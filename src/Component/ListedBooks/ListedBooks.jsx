@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { getStoredReadBook, getStoredWishlistBook } from "../utility/Utility";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+import { IoIosArrowDown } from "react-icons/io";
 
 function ListedBooks() {
   const books = useLoaderData();
@@ -17,23 +18,27 @@ function ListedBooks() {
       );
       setReadedBooks(readedBooks);
       const wishlistbook = books.filter((book) =>
-      wishlistBooks.includes(book.bookId)
+        wishlistBooks.includes(book.bookId)
       );
-      setwishlistbook(wishlistbook)
-      
+      setwishlistbook(wishlistbook);
     }
-
   }, [books]);
   const sortByRatingDescending = () => {
-    const sortedReadedBooks = [...readedbooks].sort((a, b) => b.rating - a.rating);
+    const sortedReadedBooks = [...readedbooks].sort(
+      (a, b) => b.rating - a.rating
+    );
     setReadedBooks(sortedReadedBooks);
   };
   const sortByNumOfPagesDescending = () => {
-    const sortedReadedBooks = [...readedbooks].sort((a, b) => b.totalPages - a.totalPages);
+    const sortedReadedBooks = [...readedbooks].sort(
+      (a, b) => b.totalPages - a.totalPages
+    );
     setReadedBooks(sortedReadedBooks);
   };
   const sortByPublishYearDescending = () => {
-    const sortedReadedBooks = [...readedbooks].sort((a, b) => b.yearOfPublishing - a.yearOfPublishing);
+    const sortedReadedBooks = [...readedbooks].sort(
+      (a, b) => b.yearOfPublishing - a.yearOfPublishing
+    );
     setReadedBooks(sortedReadedBooks);
   };
 
@@ -43,25 +48,29 @@ function ListedBooks() {
         Books
       </div>
       <div className="flex justify-center">
-      <div className="dropdown dropdown-bottom text-center ">
-        <div tabIndex={0} role="button" className="btn m-1 bg-[#23BE0A]">
-        Sort By 
+        <div className="dropdown dropdown-bottom text-center ">
+          <div tabIndex={0} role="button" className="btn m-1 bg-[#23BE0A]">
+            Sort By <IoIosArrowDown />
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <button onClick={sortByRatingDescending}>Rating</button>
+            </li>
+            <li>
+              <button onClick={sortByNumOfPagesDescending}>
+                Number of pages
+              </button>
+            </li>
+            <li>
+              <button onClick={sortByPublishYearDescending}>
+                Publisher year
+              </button>
+            </li>
+          </ul>
         </div>
-        <ul
-          tabIndex={0}
-          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-        >
-          <li>
-            <button onClick={sortByRatingDescending}>Rating</button>
-          </li>
-          <li>
-          <button onClick={sortByNumOfPagesDescending}>Number of pages</button>
-          </li>
-          <li>
-          <button onClick={sortByPublishYearDescending}>Publisher year</button>
-          </li>
-        </ul>
-      </div>
       </div>
       <div role="tablist" className="tabs tabs-lifted mt-6">
         <input
@@ -134,10 +143,13 @@ function ListedBooks() {
                   <li className="text-[#FFAC33] bg-[#FFAC3326] rounded-2xl py-1 px-2 font-medium">
                     Rating: {book.rating}
                   </li>
-                  <NavLink to={`/CardDetails/${book.bookId}`} className="card-link pt-1">
-                  <button className="bg-[#23BE0A] text-white rounded-2xl px-2 py-1 ">
-                    View Details
-                  </button>
+                  <NavLink
+                    to={`/CardDetails/${book.bookId}`}
+                    className="card-link pt-1"
+                  >
+                    <button className="bg-[#23BE0A] text-white rounded-2xl px-2 py-1 ">
+                      View Details
+                    </button>
                   </NavLink>
                 </div>
               </div>
@@ -214,10 +226,13 @@ function ListedBooks() {
                   <li className="text-[#FFAC33] bg-[#FFAC3326] rounded-2xl py-1 px-2 font-medium">
                     Rating: {book.rating}
                   </li>
-                  <NavLink to={`/CardDetails/${book.bookId}`} className="card-link pt-1">
-                  <button className="bg-[#23BE0A] text-white rounded-2xl px-2 py-1 ">
-                    View Details
-                  </button>
+                  <NavLink
+                    to={`/CardDetails/${book.bookId}`}
+                    className="card-link pt-1"
+                  >
+                    <button className="bg-[#23BE0A] text-white rounded-2xl px-2 py-1 ">
+                      View Details
+                    </button>
                   </NavLink>
                 </div>
               </div>

@@ -26,11 +26,7 @@ function Banner() {
           </NavLink>
         </div>
         <div className="w-[25%] rounded-lg">
-          <img
-            className="rounded-lg"
-            src="/assets/blob1.jpeg"
-            alt="img"
-          />
+          <img className="rounded-lg" src="/assets/blob1.jpeg" alt="img" />
         </div>
       </div>
     </div>

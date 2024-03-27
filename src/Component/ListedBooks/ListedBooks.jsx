@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { getStoredReadBook, getStoredWishlistBook } from "../utility/Utility";
+import { NavLink } from 'react-router-dom';
 
 function ListedBooks() {
   const books = useLoaderData();
@@ -133,9 +134,11 @@ function ListedBooks() {
                   <li className="text-[#FFAC33] bg-[#FFAC3326] rounded-2xl py-1 px-2 font-medium">
                     Rating: {book.rating}
                   </li>
-                  <button className="bg-[#23BE0A] text-white rounded-2xl px-2 ">
+                  <NavLink to={`/CardDetails/${book.bookId}`} className="card-link pt-1">
+                  <button className="bg-[#23BE0A] text-white rounded-2xl px-2 py-1 ">
                     View Details
                   </button>
+                  </NavLink>
                 </div>
               </div>
             </div>
@@ -211,9 +214,11 @@ function ListedBooks() {
                   <li className="text-[#FFAC33] bg-[#FFAC3326] rounded-2xl py-1 px-2 font-medium">
                     Rating: {book.rating}
                   </li>
-                  <button className="bg-[#23BE0A] text-white rounded-2xl px-2 ">
+                  <NavLink to={`/CardDetails/${book.bookId}`} className="card-link pt-1">
+                  <button className="bg-[#23BE0A] text-white rounded-2xl px-2 py-1 ">
                     View Details
                   </button>
+                  </NavLink>
                 </div>
               </div>
             </div>

@@ -83,7 +83,7 @@ function ListedBooks() {
         />
         <div
           role="tabpanel"
-          className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+          className="tab-content bg-base-100 border-base-300 rounded-box p-4 mx-auto"
         >
           {readedbooks.map((book, idx) => (
             <div
@@ -166,7 +166,7 @@ function ListedBooks() {
         />
         <div
           role="tabpanel"
-          className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+          className="tab-content bg-base-100 border-base-300 rounded-box p-2 mx-auto"
         >
           {wishlistbook.map((book, idx) => (
             <div
@@ -175,7 +175,7 @@ function ListedBooks() {
             >
               <img
                 src={book.image}
-                className="w-[20%] h-[1%] pl-12 my-auto"
+                className="lg:w-[21%] w-[80%] lg:pl-12 lg:p-0 p-2 my-auto mx-auto lg:pt-0 pt-4 "
                 alt="Album"
               />
 

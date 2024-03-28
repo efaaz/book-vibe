@@ -74,11 +74,12 @@ export default function App() {
       setReadedBooks(readedBooks);
     }
   }, [books]);
+  console.log(readedbook);
   return (
     <BarChart
       width={1100}
       height={500}
-      data={data}
+      data={readedbook}
       margin={{
         top: 20,
         right: 30,
@@ -87,15 +88,15 @@ export default function App() {
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
+      <XAxis dataKey="bookName" />
       <YAxis />
       <Bar
-        dataKey="uv"
+        dataKey="totalPages"
         fill="#8884d8"
         shape={<TriangleBar />}
         label={{ position: "top" }}
       >
-        {data.map((entry, index) => (
+        {readedbook.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
         ))}
       </Bar>

@@ -48,7 +48,7 @@ function ListedBooks() {
         Books
       </div>
       <div className="flex justify-center">
-        <div className="dropdown dropdown-bottom text-center ">
+        <div className="dropdown dropdown-bottom text-center mt-6">
           <div tabIndex={0} role="button" className="btn m-1 bg-[#23BE0A]">
             Sort By <IoIosArrowDown />
           </div>

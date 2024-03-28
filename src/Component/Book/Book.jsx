@@ -21,7 +21,7 @@ function Books({ data }) {
             ))}
           </div>
           <h2 className="font-bold text-2xl playfair">{data.bookName}</h2>
-          <p className="text-[#131313CC]">By : {data.author}</p>
+          <p className="text-[#131313CC] font-medium">By : {data.author}</p>
           <div className="border border-dashed "></div>
           <div className="flex justify-between">
             <p className="text-[#131313CC] font-medium">{data.category}</p>

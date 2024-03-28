@@ -61,13 +61,14 @@ function CardDetails() {
           <span className="font-medium">Review: </span>
           {selectdBook.review}
         </p>
-        <div className="flex gap-2 list-none work py-4">
+        <div className="flex gap-2 list-none work py-4 items-center work font-bold">
+          Tags: 
           {selectdBook.tags.map((book, idx) => (
             <li
               key={idx}
               className="text-[#23BE0A] bg-[#22be0a15] rounded-2xl p-2 font-medium"
             >
-              {book}
+              #{book}
             </li>
           ))}
         </div>

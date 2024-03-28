@@ -70,6 +70,34 @@ function Navbar() {
                   Pages To Read
                 </NavLink>
               </li>
+              <li>
+              <NavLink
+                to="/AboutUs"
+                className={({ isActive }) =>
+                  `mx-2 text-lg ${
+                    isActive
+                      ? "btn btn-outline btn-success font-semibold"
+                      : "text-gray-700"
+                  }`
+                }
+              >
+                About Us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/Contacts"
+                className={({ isActive }) =>
+                  `mx-2 text-lg ${
+                    isActive
+                      ? "btn btn-outline btn-success font-semibold"
+                      : "text-gray-700"
+                  }`
+                }
+              >
+               Contact Us
+              </NavLink>
+            </li>
             </ul>
           </div>
           <a className="btn btn-ghost lg:text-3xl text-xl font-bold">
@@ -118,6 +146,34 @@ function Navbar() {
                 }
               >
                 Pages To Read
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/AboutUs"
+                className={({ isActive }) =>
+                  `mx-2 text-lg ${
+                    isActive
+                      ? "btn btn-outline btn-success font-semibold"
+                      : "text-gray-700"
+                  }`
+                }
+              >
+                About Us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/Contacts"
+                className={({ isActive }) =>
+                  `mx-2 text-lg ${
+                    isActive
+                      ? "btn btn-outline btn-success font-semibold"
+                      : "text-gray-700"
+                  }`
+                }
+              >
+               Contact Us
               </NavLink>
             </li>
           </ul>

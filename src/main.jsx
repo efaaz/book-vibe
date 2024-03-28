@@ -9,6 +9,8 @@ import ListedBooks from "./Component/ListedBooks/ListedBooks.jsx";
 import CardDetails from "./Component/CardDetails/CardDetails.jsx";
 import UserContexProvider from "./Component/Context/Context.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AboutUs from "./Component/AboutUs/AboutUs.jsx";
+import Contacts from "./Component/Contacts/Contacts.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,12 +35,14 @@ const router = createBrowserRouter([
       {
         path: "/CardDetails/:bookId",
         element: <CardDetails />,
-        // children: [
-        //   {
-        //     path: "/:bookId",
-        //     element: <Home />,
-        //   },
-        // ]
+      },
+      {
+        path: "/AboutUs",
+        element: <AboutUs />,
+      },
+      {
+        path: "/Contacts",
+        element: <Contacts />,
       },
     ],
   },

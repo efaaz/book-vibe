@@ -11,6 +11,7 @@ import UserContexProvider from "./Component/Context/Context.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AboutUs from "./Component/AboutUs/AboutUs.jsx";
 import Contacts from "./Component/Contacts/Contacts.jsx";
+import AuthProvider from "./Component/Context/AuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -50,8 +51,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <UserContexProvider>
-      <RouterProvider router={router} />
-    </UserContexProvider>
+    <AuthProvider>
+      <UserContexProvider>
+        <RouterProvider router={router} />
+      </UserContexProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

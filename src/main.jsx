@@ -12,6 +12,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AboutUs from "./Component/AboutUs/AboutUs.jsx";
 import Contacts from "./Component/Contacts/Contacts.jsx";
 import AuthProvider from "./Component/Context/AuthProvider.jsx";
+import Register from "./Component/Register/Register.jsx";
+import Login from "./Component/LogIn/Login.jsx";
+import PrivateRoute from "./Component/PrivateRoute/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,17 +28,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/PagesToRead",
-        element: <PagesToRead />,
+        element:<PrivateRoute><PagesToRead /></PrivateRoute> ,
         loader: () => fetch("/api.json"),
       },
       {
         path: "/ListedBooks",
-        element: <ListedBooks />,
+        element: <PrivateRoute><ListedBooks /></PrivateRoute>,
         loader: () => fetch("/api.json"),
       },
       {
         path: "/CardDetails/:bookId",
-        element: <CardDetails />,
+        element: <PrivateRoute><CardDetails /></PrivateRoute>,
       },
       {
         path: "/AboutUs",
@@ -44,6 +47,14 @@ const router = createBrowserRouter([
       {
         path: "/Contacts",
         element: <Contacts />,
+      },
+      {
+        path: "/Sign-up",
+        element: <Register />,
+      },
+      {
+        path: "/Sign-in",
+        element: <Login />,
       },
     ],
   },

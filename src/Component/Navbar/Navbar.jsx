@@ -1,8 +1,18 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
 import "../../index.css";
+import { Tooltip } from "react-tooltip";
+import { AuthContext } from "../Context/AuthProvider";
+import DotSpinner from "../Loading/DotSpinner";
 
 function Navbar() {
+  const { user, logOut, loading } = useContext(AuthContext);
+  let img;
+  
+  if (user && user.photoURL) {
+    img = user.photoURL;
+    console.log(img);
+  }
   return (
     <div className="container mx-auto work">
       <div className="navbar bg-base-100">
@@ -179,11 +189,62 @@ function Navbar() {
           </ul>
         </div>
         <div className="navbar-end">
-          <button className="btn btn-success mr-4 text-white">Sign in</button>
-          <button className="btn btn-info text-white">Sign Up</button>
+        {/* <input type="checkbox" className="toggle lg:mr-2 sm:mr-0" onChange={handleToggle} /> */}
+          {loading ? (
+            // Display a loading spinner
+            <div className="flex items-center justify-center">
+              <div className="loader mr-4">
+                <DotSpinner></DotSpinner>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar mr-2"
+              >
+                {img && (
+                  <div className="w-11 rounded-full">
+                    <div
+                      data-tooltip-id="my-tooltip"
+                      data-tooltip-content={user.displayName}
+                      data-tooltip-place="left"
+                    >
+                      <img alt="user img" src={img} />
+                      <Tooltip id="my-tooltip" />
+                    </div>
+                  </div>
+                )}
+              </div>
+              {user ? (
+                <button
+                  onClick={logOut}
+                  className="btn rounded-full btn-info text-white"
+                >
+                  Sign Out
+                </button>
+              ) : (
+                <>
+                  <Link
+                    to="/Sign-in"
+                    className="btn rounded-full btn-success lg:text-base text-sm mr-2 text-white"
+                  >
+                    Log in
+                  </Link>
+                  <Link
+                    to="/Sign-up"
+                    className="btn rounded-full btn-success mr-1 text-white"
+                  >
+                    Sign Up
+                  </Link>
+                </>
+              )}
+            </>
+          )}
+        </div>
         </div>
       </div>
-    </div>
   );
 }
 

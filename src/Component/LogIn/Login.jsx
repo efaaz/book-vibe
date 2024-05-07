@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../Context/AuthProvider";
+import axios from "axios";
 
 function Login() {
   const [error, setError] = useState("");
@@ -12,7 +13,7 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { signIn, googleSignin, gitHubSignin } = useContext(AuthContext);
+  const { signIn, googleSignin} = useContext(AuthContext);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -26,16 +27,15 @@ function Login() {
         const userInfo = { email, lastLoggedAt: lastLoggedAt };
         console.log(userInfo);
         // update last logged at in the database
-        fetch("https://server-side-ecru-zeta.vercel.app/user", {
-          method: "PATCH",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(userInfo),
-        })
-          .then((res) => res.json())
+        // fetch("https://server-side-ecru-zeta.vercel.app/user", {
+        //   method: "PATCH",
+        //   headers: {
+        //     "content-type": "application/json",
+        //   },
+        //   body: JSON.stringify(userInfo),
+        // })
+        axios.patch('http://localhost:5000/api/user', userInfo)
           .then((data) => {
-            console.log(data);
             navigate(location?.state?.from?.pathname || "/");
           })
           .catch((err) => {
@@ -48,43 +48,6 @@ function Login() {
       });
   };
 
-  const handleGitHubSignin = (event) => {
-    setError("");
-    gitHubSignin();
-    googleSignin()
-      .then((userCredential) => {
-        console.log(userCredential);
-        const email = userCredential.user?.email;
-        const lastLoggedAt = userCredential.user?.metadata?.lastSignInTime;
-        const creationTime = userCredential.user?.metadata?.creationTime;
-        const userInfo = {
-          email: email,
-          creationTime: creationTime,
-          lastLoggedAt: lastLoggedAt,
-        };
-        console.log(userInfo);
-        // update last logged at in the database
-        fetch("https://server-side-ecru-zeta.vercel.app/user", {
-          method: "PATCH",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(userInfo),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            navigate(location?.state?.from?.pathname || "/");
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      })
-      .catch((error) => {
-        setError(error.message);
-        toast("Invalid user credential");
-      });
-  };
 
   const handleGoogleSignin = (event) => {
     setError("");
@@ -101,14 +64,14 @@ function Login() {
         };
         console.log(userInfo);
         // update last logged at in the database
-        fetch("https://server-side-ecru-zeta.vercel.app/user", {
-          method: "PATCH",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(userInfo),
-        })
-          .then((res) => res.json())
+        // fetch("http://localhost:5000/api/user", {
+        //   method: "PATCH",
+        //   headers: {
+        //     "content-type": "application/json",
+        //   },
+        //   body: JSON.stringify(userInfo),
+        // })
+        axios.put('http://localhost:5000/api/user', userInfo)
           .then((data) => {
             console.log(data);
             navigate(location?.state?.from?.pathname || "/");
@@ -181,14 +144,6 @@ function Login() {
                   onClick={handleGoogleSignin}
                 >
                   Sign in with Google
-                </button>
-                <p className="text-center">or</p>
-                <button
-                  type="button"
-                  className="btn btn-primary my-1"
-                  onClick={handleGitHubSignin}
-                >
-                  Sign in with GitHub
                 </button>
                 <p className="text-center">
                   Don't have an account?{" "}

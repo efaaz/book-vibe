@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../Context/AuthProvider";
+import axios from "axios";
 
 function Register() {
   const { signUp, updateProfile, logOut, user } = useContext(AuthContext);
@@ -40,15 +41,16 @@ function Register() {
         const createdAt = userCredential.user?.metadata?.creationTime;
         const email = userCredential.user?.email;
         const userInfo = { email, createdAt: createdAt };
-        fetch("https://server-side-ecru-zeta.vercel.app/user", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(userInfo),
-        })
-          .then((res) => res.json())
+        // fetch("https://server-side-ecru-zeta.vercel.app/user", {
+        //   method: "POST",
+        //   headers: {
+        //     "content-type": "application/json",
+        //   },
+        //   body: JSON.stringify(userInfo),
+        // })
+        axios.post('http://localhost:5000/api/user', userInfo)
           .then((data) => {
+            console.log(data);
             if (data.insertedId) {
               console.log("user added to the database");
             }

@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import UserContex from "../Context/Context";
+import React, { useEffect, useState } from "react";
 import Banner from "../Banner/Banner";
 import Book from "../Book/Book";
 import axios from "axios";
@@ -8,12 +7,10 @@ function Home() {
   let [books, setBooks] = useState([])
   // const { user } = useContext(UserContex);
   useEffect(() => {
-    axios.get("http://localhost:5000/api/books")
+    axios.get("/api/books")
       .then(function (response) {
         // handle success
-        console.log("form server:", response.data);
         setBooks(response.data);
-        console.log(books);
       })
       .catch(function (error) {
         // handle error

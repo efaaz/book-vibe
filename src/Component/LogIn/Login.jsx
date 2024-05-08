@@ -34,7 +34,7 @@ function Login() {
         //   },
         //   body: JSON.stringify(userInfo),
         // })
-        axios.patch('http://localhost:5000/api/user', userInfo)
+        axios.patch('/api/user', userInfo)
           .then((data) => {
             navigate(location?.state?.from?.pathname || "/");
           })
@@ -71,7 +71,7 @@ function Login() {
         //   },
         //   body: JSON.stringify(userInfo),
         // })
-        axios.put('http://localhost:5000/api/user', userInfo)
+        axios.put('/api/user', userInfo)
           .then((data) => {
             console.log(data);
             navigate(location?.state?.from?.pathname || "/");

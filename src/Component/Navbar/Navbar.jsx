@@ -11,7 +11,6 @@ function Navbar() {
   
   if (user && user.photoURL) {
     img = user.photoURL;
-    console.log(img);
   }
   return (
     <div className="container mx-auto work">

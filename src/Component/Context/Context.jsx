@@ -7,7 +7,7 @@ const UserContexProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/api.json"); // Absolute path to the public folder
+        const res = await fetch("/api/books"); // Absolute path to the public folder
         const data = await res.json();
         setUser(data);
       } catch (error) {

@@ -48,7 +48,7 @@ function Register() {
         //   },
         //   body: JSON.stringify(userInfo),
         // })
-        axios.post('http://localhost:5000/api/user', userInfo)
+        axios.post('/api/user', userInfo)
           .then((data) => {
             console.log(data);
             if (data.insertedId) {

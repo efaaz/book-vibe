@@ -1,3 +1,4 @@
+/*
 const getStoredReadBook = () => {
   const storedReadBook = localStorage.getItem("readedBook");
   if (storedReadBook) {
@@ -5,6 +6,7 @@ const getStoredReadBook = () => {
   }
   return [];
 };
+
 
 const saveReadedBook = (id) => {
   const storedReadBook = getStoredReadBook();
@@ -15,6 +17,7 @@ const saveReadedBook = (id) => {
   }
 };
 
+
 const getStoredWishlistBook = () => {
   const storedWishlistBook = localStorage.getItem("wishlistBooks");
   if (storedWishlistBook) {
@@ -22,6 +25,47 @@ const getStoredWishlistBook = () => {
   }
   return [];
 };
+
+const saveWishlistBook = (id) => {
+  const storedWishlistBook = getStoredWishlistBook();
+  const exists = storedWishlistBook.find((bookId) => bookId === id);
+  if (!exists) {
+    storedWishlistBook.push(id);
+    localStorage.setItem("wishlistBooks", JSON.stringify(storedWishlistBook));
+  }
+};
+*/
+
+// Using mongoDB
+
+
+const getStoredReadBook = () => {
+  const storedReadBook = [];
+  if (storedReadBook) {
+    return storedReadBook;
+  }
+  return [];
+};
+
+
+
+const saveReadedBook = (id) => {
+  const storedReadBook = getStoredReadBook();
+  const exists = storedReadBook.find((bookId) => bookId === id);
+  if (!exists) {
+    storedReadBook.push(id);
+  }
+};
+
+const getStoredWishlistBook = () => {
+  const storedWishlistBook = [];
+  if (storedWishlistBook) {
+    return storedWishlistBook;
+  }
+  return [];
+};
+
+
 
 const saveWishlistBook = (id) => {
   const storedWishlistBook = getStoredWishlistBook();

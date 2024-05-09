@@ -10,6 +10,7 @@ import {
   updateProfile as updateProfileFirebase, // Alias to avoid name conflict
 } from "firebase/auth";
 import { auth } from "../../Firebase/firebase.config";
+import axios from "axios";
 
 
 export const AuthContext = createContext(null);
@@ -61,8 +62,25 @@ function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = {email: userEmail}
+      setUser(currentUser);
+      if (currentUser) {
+        axios.post('/api/user/jwt', loggedUser, {withCredentials: true})
+        .then((response) => {
+          console.log('Token responce', response.data);
+        })
+        
+      }
+      else{
+        axios.post('/api/user/logout', loggedUser, {withCredentials: true})
+        .then((response) => {
+          console.log(response.data);
+        })
+        
+      }
       setLoading(false);
     });
 
